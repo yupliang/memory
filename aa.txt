@@ -1,0 +1,5 @@
+vmmap /Users/zhangzhongliang/Downloads/tmp/FLLivePhotoMaker\[1268\].memgraph | grep -v "__DATA_CONST" | grep -v "unused shlib __DATA" | grep -v "__DATA"| grep -v "__TEXT"|grep -v "MallocStackLoggingLiteZone"|grep -v "Performance tool data"|open -f -a 'sublime text'
+
+
+
+malloc_history -callTree /Users/zhangzhongliang/Downloads/tmp/FLLivePhotoMaker\[1268\].memgraph 0x00000001013d4000| open -f -a 'sublime text'
