@@ -3,3 +3,7 @@ vmmap /Users/zhangzhongliang/Downloads/tmp/FLLivePhotoMaker\[1268\].memgraph | g
 
 
 malloc_history -callTree /Users/zhangzhongliang/Downloads/tmp/FLLivePhotoMaker\[1268\].memgraph 0x00000001013d4000| open -f -a 'sublime text'
+
+malloc内存分配基于malloc zone，并将内存分配按大小分为nano、tiny、small、large几种类型，申请时按需进行最适分配
+malloc在首次调用时，初始化default zone，在64位情况下，会初始化default zone为nano zone，同时初始化一个scalable zone作为helper zone，nano zone负责nano大小的分配，scalable zone则负责tiny、small和large内存的分配
+每次malloc时，根据传入的size参数，优先交给nano zone做分配处理，如果大小不在nano范围，则转交给helper zone处理。
